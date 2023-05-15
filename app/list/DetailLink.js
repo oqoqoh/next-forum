@@ -11,10 +11,7 @@ export default function DetailLink(){
     return (
         <button onClick={()=>{
             router.push("/");
-            router.back();
-            router.forward();
-            router.refresh();
-            router.prefetch("/list/6461d92197bc4fbd3e9f9485")
+            
         }}>useRouter</button>
     )
 }
