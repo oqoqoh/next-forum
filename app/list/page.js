@@ -1,7 +1,8 @@
 import { connectDB } from "@/util/database";
 import Link from "next/link";
 import DetailLink from "./DetailLink";
-import MoveToPostButton from "./../write/MoveToPostButton";
+import MoveToPostButton from "../list/MoveToPostButton";
+import MoveToUpdateButton from "../list/MoveToUpdateButton";
 
 export default async function List() {
   const db = (await connectDB).db("forum");
@@ -15,6 +16,8 @@ export default async function List() {
             <Link href={`/list/${data._id}`}>
               <h4>{data.title}</h4>
             </Link>
+
+            <MoveToUpdateButton id={data._id.toString()} />
             <p>1월 1일</p>
             {/* <DetailLink></DetailLink> */}
           </div>
