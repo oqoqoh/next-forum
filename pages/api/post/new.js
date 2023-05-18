@@ -1,6 +1,7 @@
 import { connectDB } from "@/util/database";
 
 export default async function handler(req, res) {
+  console.log("req.body :: ", req.body);
   if (req.method == "POST") {
     if (!req.body.title | !req.body.content) {
       return res.status(500).json("내용을 입력해주세요.");
@@ -10,6 +11,7 @@ export default async function handler(req, res) {
       await db.collection("post").insertOne(req.body);
       return res.redirect(302, "/list");
     } catch (error) {
+      console.log(error);
       return res.status(500).json("데이터 저장 문제 발생.");
     }
   }

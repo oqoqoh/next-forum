@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 import { dbInfo } from "./config";
 
-const url = `mongodb+srv://${dbInfo.username}:${dbInfo.password}@cluster0.sqqlhdv.mongodb.net/?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${dbInfo.username}:${dbInfo.password}@cluster0.vy5lpxi.mongodb.net/?retryWrites=true&w=majority`;
 const options = { useNewUrlParser: true };
 let connectDB;
 
