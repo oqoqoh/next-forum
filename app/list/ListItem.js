@@ -1,8 +1,10 @@
 "use client";
 import MoveToUpdateButton from "../list/MoveToUpdateButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ListItem({ result }) {
+  const router = useRouter();
   return (
     <>
       {result.map((data, i) => {
@@ -19,7 +21,12 @@ export default function ListItem({ result }) {
                 fetch("/api/post/delete", {
                   method: "POST",
                   body: data._id.toString(),
-                }).then(console.log("fetch send"));
+                })
+                  .then((res) => res.json())
+                  .then((result) => {
+                    console.log(result);
+                    router.push("/list");
+                  });
               }}
             >
               ❌

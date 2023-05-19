@@ -9,11 +9,10 @@ export default async function handler(req, res) {
         .collection("post")
         .deleteOne({ _id: new ObjectId(req.body) });
       console.log(result);
-      //res.status(200).json("삭제완료");
-      return res.redirect(302, "/list");
+      res.status(200).json("삭제완료");
     } catch (error) {
       console.log(error);
-      return res.status(500).json("문제 발생.");
+      res.status(500).json("문제 발생.");
     }
   }
 }

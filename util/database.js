@@ -1,7 +1,9 @@
 import { MongoClient } from "mongodb";
 import { dbInfo } from "./config";
+import "dotenv";
 
-const url = `mongodb+srv://${dbInfo.username}:${dbInfo.password}@cluster0.vy5lpxi.mongodb.net/?retryWrites=true&w=majority`;
+//const url = `mongodb+srv://${dbInfo.username}:${dbInfo.password}@cluster0.vy5lpxi.mongodb.net/?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.vy5lpxi.mongodb.net/?retryWrites=true&w=majority`;
 const options = { useNewUrlParser: true };
 let connectDB;
 

@@ -15,6 +15,7 @@ export default async function handler(req, res) {
         }
       );
       //return res.status(200).json("변경성공.");
+      console.log("result :: ", result);
       res.redirect(302, "/list");
     } catch (error) {
       console.log(error);
