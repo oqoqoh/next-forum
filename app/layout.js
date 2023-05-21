@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]"
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -30,7 +31,9 @@ export default async function RootLayout({ children }) {
             : <LogoutBtn></LogoutBtn>
           }
         </div>
+        
         {children}
+        
       </body>
     </html>
   );

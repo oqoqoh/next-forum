@@ -1,7 +1,15 @@
 import { connectDB } from "@/util/database";
+import { getServerSession } from "next-auth";
+import {authOptions} from "@/pages/api/auth/[...nextauth]"
+
 
 export default async function handler(req, res) {
-  console.log("req.body :: ", req.body);
+  const session = await getServerSession(req,res,authOptions); 
+  if (session) {
+    req.body.auth = session.user.email;
+  }
+  
+
   if (req.method == "POST") {
     if (!req.body.title | !req.body.content) {
       return res.status(500).json("내용을 입력해주세요.");
