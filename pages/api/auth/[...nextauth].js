@@ -1,19 +1,17 @@
+import "dotenv";
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
-import KakaoProvider from "next-auth/providers/kakao";
-import kakaoLogin from "../../../util/config";
+//import KakaoProvider from "next-auth/providers/kakao";
+//import kakaoLogin from "../../../util/config";
 
 export const authOptions = {
   providers: [
     GithubProvider({
-      clientId: "Github에서 발급받은ID",
-      clientSecret: "Github에서 발급받은Secret",
+      clientId: process.env.GIT_CLIENT_ID,
+      clientSecret: process.env.GIT_CLIENT_SECRET,
     }),
-    KakaoProvider({
-      clientId: kakaoLogin.kakaoClientId,
-      clientSecret: kakaoLogin.kakaoClientSecret,
-    }),
+    
   ],
-  secret: "qwer1234",
+  secret: process.env.JWT_SECRET,
 };
 export default NextAuth(authOptions);
