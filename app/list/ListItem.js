@@ -19,9 +19,25 @@ export default function ListItem({ result, session }) {
             <Link href={`/list/${data._id}`}>
               <h4>{data.title}</h4>
             </Link>
-            {sessionInfo ? (
+            <MoveToUpdateButton id={data._id.toString()} />
+            <p
+              onClick={() => {
+                fetch("/api/post/delete", {
+                  method: "POST",
+                  body: data._id.toString(),
+                })
+                  .then((res) => res.json())
+                  .then((result) => {
+                    console.log(result);
+                    router.push("/list");
+                  });
+              }}
+            >
+              ❌
+            </p>
+            {/* {sessionInfo ? (
               sessionInfo.user.email == data.auth ? (
-                <div>
+                <>
                   <MoveToUpdateButton id={data._id.toString()} />
                   <p
                     onClick={() => {
@@ -38,13 +54,13 @@ export default function ListItem({ result, session }) {
                   >
                     ❌
                   </p>
-                </div>
+                </>
               ) : (
                 <></>
               )
             ) : (
               <></>
-            )}
+            )} */}
           </div>
         );
       })}
